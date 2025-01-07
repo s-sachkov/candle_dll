@@ -1,0 +1,15 @@
+{
+    "version": "0.2",
+    "ignorePaths": [
+        "include",
+        "src"
+    ],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [],
+    "ignoreWords": [
+        "fclk",
+        "hdev"
+    ],
+    "import": []
+}

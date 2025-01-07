@@ -1,0 +1,4 @@
+{
+    "cmake.format.allowOptionalArgumentIndentation": true,
+    "editor.formatOnSave": true,
+}

@@ -1,0 +1,13 @@
+BasedOnStyle: LLVM 
+
+AlignAfterOpenBracket: DontAlign
+AlignConsecutiveAssignments:
+  Enabled: true
+AllowShortFunctionsOnASingleLine: None
+AllowAllArgumentsOnNextLine: false
+BinPackArguments: false
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+ColumnLimit: 140
+IndentWidth: 4
