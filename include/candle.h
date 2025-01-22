@@ -44,7 +44,6 @@ typedef enum {
 } candle_frametype_t;
 
 typedef enum {
-	CANDLE_FEATURE_NORMAL = 0x00,
 	CANDLE_FEATURE_LISTEN_ONLY = 0x01,
 	CANDLE_FEATURE_LOOP_BACK = 0x02,
 	CANDLE_FEATURE_TRIPLE_SAMPLE = 0x04,

@@ -1,8 +1,10 @@
 BasedOnStyle: LLVM 
 
 AlignAfterOpenBracket: DontAlign
-AlignConsecutiveAssignments:
-  Enabled: true
+AlignConsecutiveAssignments: None
+AlignConsecutiveBitFields: Consecutive
+AlignConsecutiveDeclarations: None  
+AlignConsecutiveMacros: Consecutive
 AllowShortFunctionsOnASingleLine: None
 AllowAllArgumentsOnNextLine: false
 BinPackArguments: false

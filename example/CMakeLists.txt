@@ -4,7 +4,7 @@ add_executable(${TARGET_NAME}
 	main.c
 )
 
-target_link_libraries(${TARGET_NAME} 
+target_link_libraries(${TARGET_NAME}
 	PRIVATE
 		candle_api
 		project_warnings

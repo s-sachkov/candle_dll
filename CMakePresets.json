@@ -1,0 +1,59 @@
+{
+    "version": 10,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 12,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "displayName": "Ninja MinGW",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build",
+            "installDir": "${sourceDir}/deploy",
+            "environment": {
+                "API_LIB": "${sourceDir}/build/src",
+                "PATH": "$env{API_LIB};$penv{PATH}"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug;Release",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CMAKE_INSTALL_BINDIR": ".",
+                "CMAKE_INSTALL_LIBDIR": ".",
+                "CANDLE_DLL_EXAMPLE": "ON"
+            }
+        },
+        {
+            "name": "ninja-debug",
+            "displayName": "Ninja MinGW Debug",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "ninja-release",
+            "displayName": "Ninja MinGW Release",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "release",
+            "displayName": "Release",
+            "configurePreset": "ninja-release"
+        },
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "configurePreset": "ninja-debug"
+        }
+    ],
+    "testPresets": [],
+    "packagePresets": []
+}
