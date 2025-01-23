@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <windows.h>
 
 #include "candle.h"
 
@@ -144,6 +145,50 @@ int main(int argc, char *argv[])
             continue;
         }
         print_device_info(hdev);
+        if (!candle_dev_open(hdev)) {
+            print_device_error(hdev, "candle_dev_open");
+            goto end;
+        }
+        const uint8_t ch = 0;
+        if (!candle_channel_set_bitrate(hdev, ch, 500000))
+        {
+            print_device_error(hdev, "candle_channel_set_bitrate");
+        }
+
+        if (!candle_channel_start(hdev, ch, 0))
+        {
+            print_device_error(hdev, "candle_channel_start");
+        }
+
+        for(int i = 0; i < 1000; ++i)
+        {
+            candle_frame_t frame;
+            frame.can_id = i;
+            frame.can_dlc = 8;
+            frame.data[0] = i;
+            frame.data[1] = i;
+            frame.data[2] = i;
+            frame.data[3] = i;
+            frame.data[4] = i;
+            frame.data[5] = i;
+            frame.data[6] = i;
+            frame.data[7] = i;
+
+            if (!candle_frame_send(hdev, ch, &frame))
+            {
+                print_device_error(hdev, "candle_frame_send");
+                goto end;
+            }
+            Sleep(20);
+        }
+        if (!candle_channel_stop(hdev, ch))
+        {
+            print_device_error(hdev, "candle_channel_stop");
+        }
+        if (!candle_dev_close(hdev)) {
+            print_device_error(hdev, "candle_dev_close");
+            goto end;
+        }
         if (!candle_dev_free(hdev)) {
             print_lib_error("candle_dev_free");
         }
